@@ -40,7 +40,7 @@ func main() {
 	}
 
 	// Start the runner
-	duration, errored := runner.Run(ctx, f1, f2)
-	fmt.Printf("runner has completed, took %s and %d/2 errored.\n", duration, errored)
+	duration := runner.RunFunc(ctx, f1, f2)
+	fmt.Printf("runner has completed, took %s..\n", duration)
 }
 ```
