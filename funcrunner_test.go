@@ -30,12 +30,14 @@ func (fflow fflow) String() string                                            { 
 
 type fflowDisabled struct{}
 
-func (fflow fflowDisabled) ID() string                                                { return fmt.Sprintf("%T", fflow) }
-func (fflow fflowDisabled) Enabled() (bool, string)                                   { return false, "some reason" }
-func (fflow fflowDisabled) PreRun(context.Context) ([]interface{}, error)             { return nil, nil }
-func (fflow fflowDisabled) Run(context.Context, []interface{}) ([]interface{}, error) { return nil, nil }
-func (fflow fflowDisabled) PostRun(context.Context, []interface{}) error              { return nil }
-func (fflow fflowDisabled) String() string                                            { return fflow.ID() }
+func (fflow fflowDisabled) ID() string                                    { return fmt.Sprintf("%T", fflow) }
+func (fflow fflowDisabled) Enabled() (bool, string)                       { return false, "some reason" }
+func (fflow fflowDisabled) PreRun(context.Context) ([]interface{}, error) { return nil, nil }
+func (fflow fflowDisabled) Run(context.Context, []interface{}) ([]interface{}, error) {
+	return nil, nil
+}
+func (fflow fflowDisabled) PostRun(context.Context, []interface{}) error { return nil }
+func (fflow fflowDisabled) String() string                               { return fflow.ID() }
 
 func TestRunFuncs(t *testing.T) {
 	fcount := 0
